@@ -1,0 +1,35 @@
+body {
+    background-color: rgb(241, 230, 216);
+}
+
+header {
+    color: white;
+    background-color: rgb(124, 111, 95);
+}
+
+/* #scoreboard {
+    flex-basis: 48%;
+    align-items: flex-start;
+    margin-left: 2%;
+} */
+#timer {
+   text-align: right;
+   margin-right: 10px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* margin: 0 auto to center on page? */
+    box-shadow: 0 4px 8px 0 rgb(124, 111, 95);
+    margin-left: 20%;
+    margin-right: 20%;
+    background-color: rgb(193, 181, 166);
+}
+
+button {
+    background-color: rgb(241, 230, 216);
+    border-width: 3px;
+    border-color: rgb(90, 62, 62);
+}

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <h4 id="timer"></h4>
+        <!-- <h4 id="scoreboard">Scoreboard</h4> -->
+    </header>
+
+    <main class="container">
+        <h3 class="content"></h3>
+        <h4 id="description"></h4>
+        <button id="startQuiz"></button>
+        <button id="A"></button>
+        <button id="B"></button>
+        <button id="C"></button>
+        <button id="D"></button>
+    </main>
+    
+<script src="./script.js"></script>
+</body>
+</html>
+
+<!-- *PSEUDOCODE -->
+<!-- opening text -->
+<!-- header: timer in right top corner -->
+<!-- start quiz button -->
+<!-- On page load: 
+        timer at set time
+        opener text visable
+        "start quiz" button visable -->
+<!-- When i press "start quiz":
+        the opening text is hidden 
+        the first question is visible 
+        the timer starts-->
+<!-- When i choose one mutliple choice answer:
+        move to next q -->
+    
+
+<!-- NOTES: -->
+<!-- highscore card can be stored here OR on a separate html file (which is what the example does) -->
+<!--    local storage (in the browser) -->
+<!--     [{"score":X, "initials": CGER}, {"score":X, "initials": ARQ}] written like this in the dev tools (application > value tab),
+            stored as an ARRAY -->
+            <!-- score list does NOT have to be sorted in order (but can be) -->
+<!-- Correct answer = more time on the clock -->
+<!-- wrong answer = time deducted from clock -->
