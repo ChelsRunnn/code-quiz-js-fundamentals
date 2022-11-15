@@ -1,10 +1,12 @@
 body {
     background-color: rgb(241, 230, 216);
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 header {
     color: white;
     background-color: rgb(124, 111, 95);
+    box-shadow: 0 4px 8px 0 rgb(124, 111, 95);
 }
 
 /* #scoreboard {
@@ -15,17 +17,52 @@ header {
 #timer {
    text-align: right;
    margin-right: 10px;
+   font-size: 25px;
+   padding-right: 10%;
 }
 
 .container {
+    /* display: block; */
+    /* margin: 0 auto to center on page? */
+    /* align-items: center;
+    flex-direction: column; */
     display: flex;
     justify-content: center;
-    align-items: center;
-    /* margin: 0 auto to center on page? */
-    box-shadow: 0 4px 8px 0 rgb(124, 111, 95);
-    margin-left: 20%;
-    margin-right: 20%;
+    margin-left: 15%;
+    margin-right: 15%;
     background-color: rgb(193, 181, 166);
+    box-shadow: 0 4px 8px 0 rgb(124, 111, 95);
+    border-radius: 50px;
+    border-style: groove;
+    border-color: rgb(52, 34, 11);
+    border-width: 3px;
+}
+.hide {
+    display: none;
+}
+
+.show {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+}
+
+#intro h2 {
+    /* text-align: center; */
+    color: rgb(52, 34, 11);
+    font-size: 80px;
+    margin-bottom: 0;
+}
+
+#intro p {
+    font-size: 32px;
+    margin-top: 0;
+}
+
+h4 {
+    text-align: center;
 }
 
 button {
@@ -35,4 +72,10 @@ button {
     color: rgb(90, 62, 62);
     padding: 10px;
     margin: 24px;
+    border-radius: 10px;
+}
+
+#startButton {
+    margin-bottom: 30px;
+    font-size: 15px;   
 }

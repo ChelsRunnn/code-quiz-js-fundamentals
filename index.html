@@ -9,18 +9,31 @@
 </head>
 <body>
     <header>
+        <!-- <a href= scorecard html link here><h4>Scoreboard</h4></a> -->
         <h4 id="timer"></h4>
-        <!-- <h4 id="scoreboard">Scoreboard</h4> -->
     </header>
 
     <main class="container">
-        <h3 class="content"></h3>
-        <h4 id="description"></h4>
-        <button id="startQuiz"></button>
-        <button id="A"></button>
-        <button id="B"></button>
-        <button id="C"></button>
-        <button id="D"></button>
+        <section id="intro" class="show">
+            <h2><span class="content">Cowboy Certification</span></h2>
+            <p><span id="description">Can you ride with the best of 'em? Saddle up and find out!</span></p>
+            <button id="startButton"><span>Ride On</span></button>
+        </section>
+        <section id="quiz" class="hide">
+            <h3>Question Text Here</h3>
+            <ul>
+                <li>Option A</li>
+                <li>Option B</li>
+                <li>Option C</li>
+                <li>Option D</li>
+            </ul>
+        </section>
+        <section id="end" class="hide">
+            <h2>Rest your horse</h2>
+            <p>Claim your score and carve your initials here:</p>
+            <input type="text" maxlength="4">
+            <button id="reride">Re-Ride</button>
+        </section>
     </main>
     
 <script src="./script.js"></script>
