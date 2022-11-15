@@ -32,4 +32,7 @@ button {
     background-color: rgb(241, 230, 216);
     border-width: 3px;
     border-color: rgb(90, 62, 62);
+    color: rgb(90, 62, 62);
+    padding: 10px;
+    margin: 24px;
 }
