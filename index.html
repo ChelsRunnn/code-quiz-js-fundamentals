@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css">
-    <title>Code Quiz</title>
+    <title>Cowboy Quiz</title>
 </head>
 <body>
     <header>
@@ -21,17 +21,18 @@
         </section>
         <section id="quiz" class="hidden">
             <h3><span id="askText">Question Text Here</span></h3>
-            <section>
+            <section id="nextQuestion">
                 <button class="choice" id="a">Option A</button>
                 <button class="choice" id="b">Option B</button>
                 <button class="choice" id="c">Option C</button>
                 <button class="choice" id="d">Option D</button>
-                </section>
+            </section>
+            <p id="feedback"></p>
         </section>
         <section id="end" class="hidden">
             <h2>Rest your horse</h2>
             <p>Claim your score and carve your initials here:</p>
-            <input type="text" maxlength="4">
+            <input type="text" maxlength="4" id="initials">
             <button id="reride">Re-Ride</button>
         </section>
     </main>
