@@ -171,10 +171,10 @@ for (var i = 0; i < storageArray.length; i++) {
     document.getElementById("storedScores").appendChild(li);
 }
 // }
+
 // 1) submit clicked= transition to score-card page & create FOR loop to create li for every array pair
 // .textContent for each item to display 
 
-// function: correct/incorrect feedback displayed 
 
 // function: time added/deducted for correct/incorrect answer
 
