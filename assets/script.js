@@ -56,6 +56,7 @@ var startButton = document.querySelector("#startButton");
 var quiz = document.querySelector("#quiz");
 var intro = document.querySelector("#intro");
 var end = document.querySelector("#end");
+var scorecard = document.querySelector("#scorecard");
 
 // Clicking "startButton" moves display to first quiz questions & starts timer
 startButton.addEventListener("click", function (event) {
@@ -138,6 +139,7 @@ nextQuestion.addEventListener("click", function (event) {
 // Use local storage for scoreboard
 var submitUserInput = document.querySelector("#submit");
 var userInput = document.querySelector("#initials");
+
 var storageArray = JSON.parse(localStorage.getItem("storageArray")) || [];
 console.log(storageArray);
 
@@ -155,8 +157,15 @@ submitUserInput.addEventListener("click", function (event) {
 
     console.log(scores)
     localStorage.setItem("storageArray", JSON.stringify(storageArray));
+
+    end.setAttribute("class", "hidden");
+    scorecard.setAttribute("class", "shown");
 })
 
+for (var i = 0; i < storageArray.length; i++) {
+    scorecard.textContent(storageArray)
+    
+}
 
 // 1) submit clicked= transition to score-card page & create FOR loop to create li for every array pair
 // .textContent for each item to display 
