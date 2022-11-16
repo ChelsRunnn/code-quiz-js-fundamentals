@@ -26,18 +26,27 @@ var questions = [
     }
 ]
 
+// var scoreboard = [];
+// var storageArray = JSON.parse(localStorage.getItem("scores"));
+// scoreboard.push(scores)
+
+
 // timer counts down to zero
 var time = document.querySelector("#timer");
-var secondsLeft = 30;
+var secondsLeft = 40;
+var timeInterval;
 
+// function for timer, including what happens when timer reaches 0
 function startClock() {
-    var timeInterval = setInterval(function () {
+    timeInterval = setInterval(function () {
         secondsLeft--;
         time.textContent = "Time: " + secondsLeft
 
         if (secondsLeft === 0) {
             clearInterval(timeInterval);
             time.textContent = "You Got Bucked Off!"
+            quiz.setAttribute("class", "hidden");
+            end.setAttribute("class", "shown");
         }
     }, 1000)
 }
@@ -50,20 +59,16 @@ var end = document.querySelector("#end");
 
 // Clicking "startButton" moves display to first quiz questions & starts timer
 startButton.addEventListener("click", function (event) {
-    var intro = document.querySelector("#intro");
     console.log(intro);
-
     intro.setAttribute("class", "hidden")
 
-    var quiz = document.querySelector("#quiz");
     console.log(quiz);
-
     quiz.setAttribute("class", "shown");
 
     startClock()
 })
 
-// ! Can these go in a FOR loop?
+// Populates correct text for the first question of the quiz
 var askText = document.querySelector("#askText");
 askText.textContent = questions[0].ask;
 
@@ -84,7 +89,6 @@ console.log(answerTextD);
 answerTextD.textContent = questions[0].answer[3];
 
 
-// ! function for navigating through Qs
 var index = 0
 var currentQuestion;
 var currentAnswerA;
@@ -92,9 +96,9 @@ var currentAnswerB;
 var currentAnswerC;
 var currentAnswerD;
 
+// function for moving through questions
 function navigate() {
-    if (secondsLeft > 0)
-    if (index < questions.length) {  
+    if (index < questions.length) {
         index++
         console.log(index);
 
@@ -109,13 +113,16 @@ function navigate() {
         answerTextC.textContent = currentAnswerC;
         currentAnswerD = questions[index].answer[3];
         answerTextD.textContent = currentAnswerD;
-    } else {
+    } 
+    // if clock runs to zero, or the last question is clicked, display moves to initial entry page and timer stops
+    else {
+        clearInterval(timeInterval)
         quiz.setAttribute("class", "hidden");
         end.setAttribute("class", "shown");
+        console.log(timeInterval)
     }
 }
 
-var feedback = document.querySelector("#feedback")
 
 var nextQuestion = document.querySelector("#nextQuestion")
 nextQuestion.addEventListener("click", function (event) {
@@ -123,50 +130,36 @@ nextQuestion.addEventListener("click", function (event) {
     console.log(nextQuestion)
     if (event.target.matches(".choice")) {
         console.log(event.target)
-
     }
 
     navigate()
-    // Feedback for right/wrong chocie
-    // if(event === questions[0].correct[0]) {
-    // feedback.textContent = ("Darn Tootin!")
-    // } else {
-    //     feedback.textContent = ("Not so fast, Partner.")
-    // }
-
-    // !here down to end of function works when active.
-    // askText.textContent = questions[1].ask;
-
-    // var answerTextA = document.querySelector("#a");
-    //  console.log(answerTextA);
-    // answerTextA.textContent = questions[1].answer[0];
-
-    // var answerTextB = document.querySelector("#b");
-    //  console.log(answerTextB);
-    // answerTextB.textContent = questions[1].answer[1];
-
-    // var answerTextC = document.querySelector("#c");
-    //  console.log(answerTextC);
-    // answerTextC.textContent = questions[1].answer[2];
-
-    // var answerTextD = document.querySelector("#d");
-    //  console.log(answerTextD);
-    // answerTextD.textContent = questions[1].answer[3];
-
 })
 
 // Use local storage for scoreboard
+var submitUserInput = document.querySelector("#submit");
 var userInput = document.querySelector("#initials");
-var scores = [];
-function storeScores() {
-    localStorage.setItem("scores", JSON.stringify(scores));
-}
+var storageArray = JSON.parse(localStorage.getItem("storageArray")) || [];
+console.log(storageArray);
+
+console.log(submitUserInput.value)
+
+submitUserInput.addEventListener("click", function (event) {
+    event.preventDefault();
+    // var storageArray = JSON.parse(localStorage.getItem("storageArray")) || [];
+
+    var scores = {
+        initials: userInput.value.trim(),
+        score: secondsLeft
+    };
+    storageArray.push(scores);
+
+    console.log(scores)
+    localStorage.setItem("storageArray", JSON.stringify(storageArray));
+})
 
 
-
-
-
-
+// 1) submit clicked= transition to score-card page & create FOR loop to create li for every array pair
+// .textContent for each item to display 
 
 // function: correct/incorrect feedback displayed 
 
