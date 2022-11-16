@@ -160,13 +160,17 @@ submitUserInput.addEventListener("click", function (event) {
 
     end.setAttribute("class", "hidden");
     scorecard.setAttribute("class", "shown");
+    // displayScores()
 })
 
+// function displayScores (){
 for (var i = 0; i < storageArray.length; i++) {
-    scorecard.textContent(storageArray)
-    
+    var li = document.createElement("li");
+    var text = document.createTextNode(storageArray[i]);
+    li.appendChild(text);
+    document.getElementById("storedScores").appendChild(li);
 }
-
+// }
 // 1) submit clicked= transition to score-card page & create FOR loop to create li for every array pair
 // .textContent for each item to display 
 
