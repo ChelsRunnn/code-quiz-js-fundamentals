@@ -14,21 +14,21 @@
     </header>
 
     <main class="container">
-        <section id="intro" class="show">
+        <section id="intro" class="shown">
             <h2><span class="content">Cowboy Certification</span></h2>
             <p><span id="description">Can you ride with the best of 'em? Saddle up and find out!</span></p>
             <button id="startButton"><span>Ride On</span></button>
         </section>
-        <section id="quiz" class="hide">
-            <h3>Question Text Here</h3>
-            <ul>
-                <li>Option A</li>
-                <li>Option B</li>
-                <li>Option C</li>
-                <li>Option D</li>
-            </ul>
+        <section id="quiz" class="hidden">
+            <h3><span id="askText">Question Text Here</span></h3>
+            <section>
+                <button class="choice" id="a">Option A</button>
+                <button class="choice" id="b">Option B</button>
+                <button class="choice" id="c">Option C</button>
+                <button class="choice" id="d">Option D</button>
+                </section>
         </section>
-        <section id="end" class="hide">
+        <section id="end" class="hidden">
             <h2>Rest your horse</h2>
             <p>Claim your score and carve your initials here:</p>
             <input type="text" maxlength="4">

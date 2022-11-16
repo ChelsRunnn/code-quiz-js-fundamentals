@@ -38,36 +38,59 @@ function startClock () {
 }
 
 startClock()
+
+var startButton = document.querySelector("#startButton");
+
+startButton.addEventListener("click", function(event) {
+    var intro = document.querySelector("#intro");
+    console.log(intro);
+
+    intro.setAttribute("class", "hidden")
+
+    var quiz = document.querySelector("#quiz");
+    console.log(quiz);
+
+    quiz.setAttribute("class", "shown");
+})
+
+var askText = document.querySelector("#askText");
+ console.log(questions);
+ console.log(questions[0].ask);
+
+askText.textContent = questions[0].ask;
+
+// ! Can these go in a FOR loop?
+var answerTextA = document.querySelector("#a");
+ console.log(answerTextA);
+answerTextA.textContent = questions[0].answer[0];
+
+var answerTextB = document.querySelector("#b");
+ console.log(answerTextB);
+answerTextB.textContent = questions[0].answer[1];
+
+var answerTextC = document.querySelector("#c");
+ console.log(answerTextC);
+answerTextC.textContent = questions[0].answer[2];
+
+var answerTextD = document.querySelector("#d");
+ console.log(answerTextD);
+answerTextD.textContent = questions[0].answer[3];
+
+
+var choice = document.querySelector(".choice")
+choice.addEventListener("click", function(event) {
+    // if (event.target === questions[0].correct) {
+    console.log("Darn tootin!")
+    // } else {
+        console.log("Not so fast, partner!")
+//     }
+})
+// ! stopped here for the night: option a is clickable only.
+
+// NEXT: make options clickable (setAttribute, button?)
+
 // function: correct/incorrect feedback displayed 
 
 // function: time added/deducted for correct/incorrect answer
 
 // function: next question, on click of any button a-d
-
-
-var container = document.querySelector(".container");
-var choices = document.querySelector(".choices");
-
-container.addEventListener("click", function(event) {
-    var element = event.target;
-    console.log(element)
-
-
-// MOVE ALL ELEMENTS TO HTML
-    // if (element.matches("#startButton")) {
-    //     // insert startQuiz function here?
-    //     var choiceA = document.createElement("button");
-    //     var choiceB = document.createElement("button");
-    //     var choiceC = document.createElement("button");
-    //     var choiceD = document.createElement("button");
-
-    //     choices.appendChild(choiceA);
-    //     choices.appendChild(choiceB);
-    //     choices.appendChild(choiceC);
-    //     choices.appendChild(choiceD);
-    // console.log(choiceA)
-    // }
-})
-
-// on click ()
-// if statement for correct choice, else wrong

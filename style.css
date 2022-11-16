@@ -37,11 +37,11 @@ header {
     border-color: rgb(52, 34, 11);
     border-width: 3px;
 }
-.hide {
+.hidden {
     display: none;
 }
 
-.show {
+.shown {
     display: flex;
     align-items: center;
     justify-content: center;
