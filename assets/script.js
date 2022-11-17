@@ -25,7 +25,6 @@ var questions = [
         correct: "4"
     }
 ]
-console.log(questions.length)
 
 var time = document.querySelector("#timer");
 var secondsLeft = 30;
@@ -38,29 +37,34 @@ var scorecard = document.querySelector("#scorecard");
 time.textContent = "Ready, Set, RIDE!";
 
 // function for timer, including what happens when timer reaches 0
-function startClock() {
-    timeInterval = setInterval(function () {
-        secondsLeft--;
-        time.textContent = "Time: " + secondsLeft
-
-        if (secondsLeft === 0) {
-            clearInterval(timeInterval);
-            time.textContent = "You Got Bucked Off!"
-            quiz.setAttribute("class", "hidden");
-            end.setAttribute("class", "shown");
-        }
-    }, 1000)
+function startClock(event) {
+    if(event.target.textContent == "Ride On"){
+        timeInterval = setInterval(function () {
+            secondsLeft--;
+            time.textContent = "Time: " + secondsLeft
+    
+            if (secondsLeft === 0) {
+                clearInterval(timeInterval);
+                time.textContent = "You Got Bucked Off!"
+                quiz.setAttribute("class", "hidden");
+                end.setAttribute("class", "shown");
+            }
+        }, 1000)
+    } else {
+        secondsLeft = secondsLeft - 5
+    }
 }
+
 
 // Clicking "startButton" moves display to first quiz questions & starts timer
 startButton.addEventListener("click", function (event) {
-    console.log(intro);
+    console.log(event);
     intro.setAttribute("class", "hidden")
 
-    console.log(quiz);
+    // console.log(quiz);
     quiz.setAttribute("class", "shown");
 
-    startClock()
+    startClock(event)
 })
 
 // Populates correct text for the first question of the quiz
@@ -95,7 +99,7 @@ var currentAnswerD;
 function navigate() {
     if (index < questions.length - 1) {
         index++
-        console.log(index);
+        // console.log(index);
 
         currentQuestion = questions[index].ask;
         askText.textContent = currentQuestion
@@ -125,24 +129,18 @@ nextQuestion.addEventListener("click", function (event) {
         console.log("Darn tootin!")
     } else {
         console.log("Not so fast, Partner!")
+        startClock(event)
     }
 
     navigate()
 })
 
-// function checkAnswer(response) {
-//     if (response !=== questions.correct) {
-//         console.log("Not so fast, Partner!")
-//         secondsLeft = -5
-//     }
-// }
-
 // Use local storage for scoreboard
 var submitUserInput = document.querySelector("#submit");
 var userInput = document.querySelector("#initials");
 var storageArray = JSON.parse(localStorage.getItem("storageArray")) || [];
-console.log(storageArray);
-console.log(submitUserInput.value)
+// console.log(storageArray);
+// console.log(submitUserInput.value)
 
 submitUserInput.addEventListener("click", function (event) {
     event.preventDefault();
@@ -153,10 +151,10 @@ submitUserInput.addEventListener("click", function (event) {
         score: secondsLeft
     };
     storageArray.push(scores);
-      console.log(scores)
+    //   console.log(scores)
 
     localStorage.setItem("storageArray", JSON.stringify(storageArray));
-      console.log(scorecard)
+    //   console.log(scorecard)
     end.setAttribute("class", "hidden");
     scorecard.setAttribute("class", "shown");
     
@@ -164,13 +162,13 @@ submitUserInput.addEventListener("click", function (event) {
 })
 
 function displayScores () {
-    console.log(storageArray)
+    // console.log(storageArray)
 for (var i = 0; i < storageArray.length; i++) {
     var li = document.createElement("li");
     var text = storageArray[i];
     //   console.log(text)
-      console.log(text.initials)
-      console.log(text.score)
+    //   console.log(text.initials)
+    //   console.log(text.score)
     var combined = text.initials + ": " + text.score
     li.append(combined);
     document.getElementById("storedScores").appendChild(li);
