@@ -25,16 +25,17 @@ var questions = [
         correct: "4"
     }
 ]
+console.log(questions.length)
 
-// var scoreboard = [];
-// var storageArray = JSON.parse(localStorage.getItem("scores"));
-// scoreboard.push(scores)
-
-
-// timer counts down to zero
 var time = document.querySelector("#timer");
-var secondsLeft = 40;
+var secondsLeft = 30;
 var timeInterval;
+var startButton = document.querySelector("#startButton");
+var quiz = document.querySelector("#quiz");
+var intro = document.querySelector("#intro");
+var end = document.querySelector("#end");
+var scorecard = document.querySelector("#scorecard");
+time.textContent = "Ready, Set, RIDE!";
 
 // function for timer, including what happens when timer reaches 0
 function startClock() {
@@ -50,13 +51,6 @@ function startClock() {
         }
     }, 1000)
 }
-
-
-var startButton = document.querySelector("#startButton");
-var quiz = document.querySelector("#quiz");
-var intro = document.querySelector("#intro");
-var end = document.querySelector("#end");
-var scorecard = document.querySelector("#scorecard");
 
 // Clicking "startButton" moves display to first quiz questions & starts timer
 startButton.addEventListener("click", function (event) {
@@ -74,19 +68,19 @@ var askText = document.querySelector("#askText");
 askText.textContent = questions[0].ask;
 
 var answerTextA = document.querySelector("#a");
-console.log(answerTextA);
+// console.log(answerTextA);
 answerTextA.textContent = questions[0].answer[0];
 
 var answerTextB = document.querySelector("#b");
-console.log(answerTextB);
+// console.log(answerTextB);
 answerTextB.textContent = questions[0].answer[1];
 
 var answerTextC = document.querySelector("#c");
-console.log(answerTextC);
+// console.log(answerTextC);
 answerTextC.textContent = questions[0].answer[2];
 
 var answerTextD = document.querySelector("#d");
-console.log(answerTextD);
+// console.log(answerTextD);
 answerTextD.textContent = questions[0].answer[3];
 
 
@@ -99,7 +93,7 @@ var currentAnswerD;
 
 // function for moving through questions
 function navigate() {
-    if (index < questions.length) {
+    if (index < questions.length - 1) {
         index++
         console.log(index);
 
@@ -114,35 +108,40 @@ function navigate() {
         answerTextC.textContent = currentAnswerC;
         currentAnswerD = questions[index].answer[3];
         answerTextD.textContent = currentAnswerD;
-    } 
+    }
     // if clock runs to zero, or the last question is clicked, display moves to initial entry page and timer stops
     else {
         clearInterval(timeInterval)
         quiz.setAttribute("class", "hidden");
         end.setAttribute("class", "shown");
-        console.log(timeInterval)
+        // console.log(timeInterval)
     }
 }
 
 
 var nextQuestion = document.querySelector("#nextQuestion")
 nextQuestion.addEventListener("click", function (event) {
-    // console.log(event.target)
-    console.log(nextQuestion)
-    if (event.target.matches(".choice")) {
-        console.log(event.target)
+    if (event.target.textContent == questions[index].correct) {
+        console.log("Darn tootin!")
+    } else {
+        console.log("Not so fast, Partner!")
     }
 
     navigate()
 })
 
+// function checkAnswer(response) {
+//     if (response !=== questions.correct) {
+//         console.log("Not so fast, Partner!")
+//         secondsLeft = -5
+//     }
+// }
+
 // Use local storage for scoreboard
 var submitUserInput = document.querySelector("#submit");
 var userInput = document.querySelector("#initials");
-
 var storageArray = JSON.parse(localStorage.getItem("storageArray")) || [];
 console.log(storageArray);
-
 console.log(submitUserInput.value)
 
 submitUserInput.addEventListener("click", function (event) {
@@ -154,27 +153,27 @@ submitUserInput.addEventListener("click", function (event) {
         score: secondsLeft
     };
     storageArray.push(scores);
+      console.log(scores)
 
-    console.log(scores)
     localStorage.setItem("storageArray", JSON.stringify(storageArray));
-
+      console.log(scorecard)
     end.setAttribute("class", "hidden");
     scorecard.setAttribute("class", "shown");
-    // displayScores()
+    
+    displayScores()
 })
 
-// function displayScores (){
+function displayScores () {
+    console.log(storageArray)
 for (var i = 0; i < storageArray.length; i++) {
     var li = document.createElement("li");
-    var text = document.createTextNode(storageArray[i]);
-    li.appendChild(text);
+    var text = storageArray[i];
+    //   console.log(text)
+      console.log(text.initials)
+      console.log(text.score)
+    var combined = text.initials + ": " + text.score
+    li.append(combined);
     document.getElementById("storedScores").appendChild(li);
 }
-// }
-
-// 1) submit clicked= transition to score-card page & create FOR loop to create li for every array pair
-// .textContent for each item to display 
-
-
-// function: time added/deducted for correct/incorrect answer
+}
 
