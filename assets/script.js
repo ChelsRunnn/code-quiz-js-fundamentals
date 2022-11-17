@@ -117,6 +117,7 @@ function navigate() {
     else {
         clearInterval(timeInterval)
         quiz.setAttribute("class", "hidden");
+        time.setAttribute("class", "hidden");
         end.setAttribute("class", "shown");
         // console.log(timeInterval)
     }
